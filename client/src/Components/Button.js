@@ -7,7 +7,7 @@ export default function Button(props) {
     return (
        <button
        
-       style={{...buttonStyle, ...props.style}}
+       style={{...props.style}}
        onClick={props.onClick}
        
        >
@@ -16,11 +16,11 @@ export default function Button(props) {
     )
 }
 
-const buttonStyle = {
-    padding: 10,
-    borderRadius: 5,
-    fontSize: 'large',
-    backgroundColor: 'lightblue',
-    color: 'pink',
-    curser: 'pointer'
-}
+// const buttonStyle = {
+//     padding: 10,
+//     borderRadius: 5,
+//     fontSize: 'large',
+//     backgroundColor: 'lightblue',
+//     color: 'pink',
+//     curser: 'pointer'
+// }

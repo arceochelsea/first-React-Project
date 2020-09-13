@@ -16,25 +16,27 @@ export default function Home() {
             <br/>
 
             <Button 
-
             onClick= {() => {window.location = loginLink}}
             text='Login button'
             style={{color: 'white', backgroundColor: 'black'}}
-
-
             />
-            
+
+            <Button 
+            onClick= {() => {window.location = regLink}}
+            text='Register button'
+            style={{color: 'white', backgroundColor: 'black'}}
+            />
             {/* <a
                 href={loginLink}
             >
                 Login
             </a> */}
-            <br/>
+            {/* <br/>
             <a 
                 href={regLink}
             >
                 Register
-            </a>
+            </a> */}
         </div>
     )
 }
