@@ -1,32 +1,35 @@
 import React from 'react';
-
 import Button from './Button';
+
+import Form from './Form';
+import { regInputs } from '../utils/userInputs';
+import { regReq } from '../utils/userRequests'
 
 export default function Register() {
 
-    const loginLink = window.location.origin + '/login';
+    const loginLink = '/login';
 
     return (
         <div>
             <h1>
                 Register Today
             </h1>
-            <h3>
-                Already Have An Account? Login Below
-            </h3>
             <br/>
 
-            <Button
-            onClick= {() => {window.location = loginLink}}
-            text='Login button'
-            style={{color: 'white', backgroundColor: 'black'}}
+            <Form
+                id='registerForm'
+                title='Register'
+                inputs={regInputs}
+                submitFunc={regReq}
             />
 
-            {/* <a
-                href={loginLink}
-            >
-                Already Have An Account? Login
-            </a> */}
+            <Button
+
+            onClick= {() => {window.location = loginLink}}
+            text='Already Have An Account? Login'
+            style={{color: 'white', backgroundColor: 'black'}}
+
+            />
         </div>
     )
 }
