@@ -30,6 +30,7 @@ export default function Form(props) { //inputs=Array(of Objs.), title=String
                             style={inProps.style}
                             id={inProps.id}
                             onChange={inProps.onChange}
+                            key={inProps.name} //giving each input a unique key, react wants child elements to have its own key
                             />
                         //)
                     //})

@@ -4,9 +4,8 @@ import Button from './Button';
 
 import Form from './Form';
 
-import userInputs, { loginInputs } from '../utils/userInputs'
-
 import { loginReq } from '../utils/userRequests'
+import { loginInputs } from '../utils/userInputs';
 
 export default function Login() {
 
@@ -20,6 +19,7 @@ export default function Login() {
             <br/>
 
             <Form
+                id='loginForm'
                 inputs={loginInputs}
                 title='Login!'
                 submitFunc={loginReq}

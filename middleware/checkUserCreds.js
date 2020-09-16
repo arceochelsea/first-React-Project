@@ -8,15 +8,18 @@ const failedLogin = ( req, res) => {
 
 module.exports = async (req, res, next) => {
 
-    const { credential: c, password: p } = req.body;
-
-    c = c.trim().toLowerCase();
-    p = p.trim();
-
     try {
-        const 
-        query = {}, 
-        field = validator.isEmail(c) ? 'email' : 'username'; 
+
+    const { credential, password } = req.body;
+
+    if ( credential == undefined || password == undefined ) {
+        return res.status(400).json({error: 'One or more required fields are undefined!'})
+    }
+
+    const 
+    c = credential.trim().toLowerCase();    
+    query = {}, 
+    field = validator.isEmail(c) ? 'email' : 'username'; 
 
         query[field] = c;
 
