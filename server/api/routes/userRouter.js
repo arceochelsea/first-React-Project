@@ -38,6 +38,7 @@ router.put(
     (req, res) => {
         try {
             res.json(req.token);
+            console.log('User Has Logged In!')
         } catch (err) {
             res.status(500).json({
                 message: err.message,

@@ -85,7 +85,7 @@ const validate = async (req, res, next) => {
         req.userData = {
             email: e,
             username: u,
-            password: encryptedPass,
+            password: encryptedPass
         }
         next()
 
