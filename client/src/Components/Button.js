@@ -20,7 +20,7 @@ const buttonStyle = {
     padding: 10,
     borderRadius: 5,
     fontSize: 'large',
-    backgroundColor: 'lightblue',
-    color: 'pink',
+    backgroundColor: 'black',
+    color: 'white',
     curser: 'pointer'
 }
