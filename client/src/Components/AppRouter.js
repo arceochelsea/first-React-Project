@@ -8,12 +8,29 @@ import Login from './Login';
 
 import Register from './Register';
 
+import useTheme from '../hooks/useTheme'
+
 export default function AppRouter() {
+
+    const [ theme, setTheme ] = useTheme(true);
+
+
     return (
+        <div>
+            <h1>
+                {theme ? 'Light Mode' : 'Dark Mode'}
+            </h1>
+            <button
+                onClick={() => {
+                    setTheme( prevTheme => 
+                    { return !prevTheme})
+                }}
+            >
+            {!theme ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            </button>
         <Switch>
             <Route
-                exact path='/'
-            >
+                path='/' exact>
                 <Home />
             </Route>
             <Route
@@ -35,8 +52,7 @@ export default function AppRouter() {
                         </h1>
                     </div>
                 </Route>
-
-
         </Switch>
+        </div>
     )
 }
