@@ -1,8 +1,11 @@
-import React, { useState, useEffect, use} from 'react';
+import React //{ useState, useEffect, use} 
+from 'react';
 
 import {BrowserRouter} from 'react-router-dom';
 
 import AppRouter from './AppRouter';
+
+import { ThemeProvider } from '../hooks/ThemeContext';
 
 function App() {
 
@@ -21,7 +24,9 @@ function App() {
       >
         Change Theme
       </button> */}
+      <ThemeProvider>
       <AppRouter />
+      </ThemeProvider>
     </BrowserRouter>
   );
 }

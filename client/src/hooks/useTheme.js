@@ -12,10 +12,13 @@ export default (initalVal) => {
     })
 
     useEffect ( () => {
+
         console.log(`Theme changed to: `, theme);
+        
         set('theme', theme)
 
-    }, [theme])
+    })
+    //, [theme])
 
 
     return [theme, setTheme]

@@ -1,14 +1,10 @@
 import React from 'react'
-
 import { Switch, Route } from 'react-router-dom'
-
 import Home from './Home';
-
 import Login from './Login';
-
 import Register from './Register';
-
-import useTheme from '../hooks/useTheme'
+import useTheme from '../hooks/useTheme';
+import Control from './Control';
 
 export default function AppRouter() {
 

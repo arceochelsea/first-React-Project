@@ -1,24 +1,26 @@
 import React from 'react';
-
 import Button from './Button';
-
-import useTheme from '../hooks/useTheme'
+// import useTheme from '../hooks/useTheme'
+import {useTheme} from '../hooks/ThemeContext'
 
 export default function Home() {
 
     const loginLink = '/login';
     const regLink = '/register';
-
-const [theme] = useTheme()
+//   const [theme] = useTheme()
 
     return (
-        <div>
+        <div
+        
+     // style={{backgroundColor: theme ? 'white' : 'black'}}
+        
+        >
             <h1>
                 Welcome To Our Service
             </h1>
-            <h3>
-                {theme ? "You're in Light" : "You're in Dark"}
-            </h3>
+            <h2>
+                {useTheme() ? "You're in Light" : "You're in Dark"}
+            </h2>
             <br/>
 
             <Button 
