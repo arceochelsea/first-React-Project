@@ -9,21 +9,8 @@ import { ThemeProvider } from '../hooks/ThemeContext';
 
 function App() {
 
-// const [theme, setTheme] = useState(true);
-
-// useEffect( () => {
-//   console.log(theme);
-// }, [])
-
   return (
     <BrowserRouter>
-      {/* <button
-      onClick={() => {
-        setTheme( prevTheme => {return !prevTheme})
-      }}
-      >
-        Change Theme
-      </button> */}
       <ThemeProvider>
       <AppRouter />
       </ThemeProvider>

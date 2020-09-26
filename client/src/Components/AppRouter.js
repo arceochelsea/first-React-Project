@@ -21,6 +21,7 @@ export default function AppRouter() {
                     setTheme( prevTheme => 
                     { return !prevTheme})
                 }}
+                style={buttonStyle}
             >
             {!theme ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             </button>
@@ -52,3 +53,19 @@ export default function AppRouter() {
         </div>
     )
 }
+
+
+const buttonStyle = {
+    padding: 10,
+    borderRadius: 5,
+    fontSize: 'large',
+    backgroundColor: 'black',
+    color: 'white',
+    curser: 'pointer'
+}
+
+// const textStyle = StyleSheet.create({
+//     setColorWhite: {
+//         color: '#f44336'
+//     }
+// })
