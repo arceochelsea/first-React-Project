@@ -2,23 +2,20 @@ const {default: axios} = require('axios');
 const baseURL = 'http://localhost:3333';
 
 module.exports = {
-    loginReq: (form) => {
+    loginReq: async (values) => {
 
-        const reqBody = {};
-
-        for (const input of form) {
-        
-            const val = input.value;
-
+        const reqBody = {},
+        failedValues = [];
+        for (const key of values) {
+            const val = values[key].trim();
             if (val !== '') {
-                reqBody[input.name] = val
+                reqBody[key] = val
             }
         }
 
         //frontend validation needed: [] make sure all fields are present, [] email is an email, [] lengths of inputs (match schema)
 
         const loginURL = `${baseURL}/user/login`
-
 
         axios.put(loginURL, reqBody)
         .then( res => {
@@ -32,20 +29,16 @@ module.exports = {
     },
 
     regReq: (form) => {
-
         const reqBody = {};
-
         for (const input of form) {
-
             const val = input.value;
-
             if (val !== '') {
                 reqBody[input.name] = val
             }
         }
 
         const registerURL = `${baseURL}/user/register`
-        
+
         axios.post(registerURL, reqBody)
         .then( res => {
             console.log(res)

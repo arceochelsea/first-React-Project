@@ -1,13 +1,19 @@
-import React from 'react'
-
-//components
+import React, {useState} from 'react'
 import Input from './Input'
 import Button from './Button'
 
 export default function Form(props) { //inputs=Array(of Objs.), title=String
 
+    const initialState = props.inputs.reduce( ( intial, input ) => {
+        intial[input.name] = ''
+        return intial
+    }, {})
+
+    const [formValue, updateValues] = useState(initialState) 
+
     const buttonOnclick = () => {
-        props.submitFunc(document.getElementById(props.id))
+        const user = props.submitFunc(formValue)
+        console.log(user)
     }
 
     return (
@@ -18,22 +24,26 @@ export default function Form(props) { //inputs=Array(of Objs.), title=String
             <form
             id={props.id}
             >
-                { //nested in { } because its in JS
+                { 
                     Array.isArray(props.inputs)
                     ? props.inputs.map( inProps => 
-                        //{
-                        //return ( //will return an array of inputs
                             <Input
+                            key={inProps.name} 
                             name={inProps.name}
                             ph={inProps.ph}
                             type={inProps.type}
                             style={inProps.style}
                             id={inProps.id}
-                            onChange={inProps.onChange}
-                            key={inProps.name} //giving each input a unique key, react wants child elements to have its own key
+                            onChange={ (e) => {
+
+                                const newValue = e.target.value;
+                                const inputName = e.target.name;
+
+                                console.log(newValue);
+
+                                updateValues( {...formValue, [inputName]: newValue} )
+                            }}
                             />
-                        //)
-                    //})
                     ): 'Dev Warning! No Inputs, Check Code'
                 }
                 </form>
