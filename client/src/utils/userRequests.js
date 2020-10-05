@@ -3,9 +3,9 @@ const baseURL = 'http://localhost:3333';
 
 module.exports = {
     loginReq: async (values) => {
-
-        const reqBody = {},
-        failedValues = [];
+        const 
+            reqBody = {},
+            failedValues = [];
         for (const key of values) {
             const val = values[key].trim();
             if (val !== '') {
@@ -51,3 +51,20 @@ module.exports = {
     //all validation from before, plus make sure both password inputs match
     }
 }
+
+if (failedValues.length !== 0) {
+    return alert(failedValues.map(err=>{return `Error with ${err.key}:\n${err.error}\n`}).join('\n'))
+}
+
+const loginURL = `${baseURL}/user/login`;
+
+const xhr = new XMLHttpRequest();
+xhr.open('PUT', loginURL, false);
+xhr.setRequestHeader('Content-Type', 'application/json')
+
+xhr.onload = () => {
+    const res = JSON.parse(xhr.responseText)
+    console.log(res);
+}
+
+xhr.send(JSON.stringify(reqBody))

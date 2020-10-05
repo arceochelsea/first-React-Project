@@ -12,11 +12,12 @@ const User = require('../../models/User');
 router.post(
     '/register', 
     validateUser, 
+    createUser,
     async (req, res) => {
         try {
             //req.userData is defined by the validation middleware
             const newUser = await User.create(req.userData);
-            res.status(201).json(newUser);
+            res.status(201).json({token: req.token, username: req.username});
 
         } catch (err) {
             res.status(500).json({
@@ -37,7 +38,7 @@ router.put(
     createJWT,
     (req, res) => {
         try {
-            res.json(req.token);
+            res.json({token: req.token, username: req.username});
             console.log('User Has Logged In!')
         } catch (err) {
             res.status(500).json({

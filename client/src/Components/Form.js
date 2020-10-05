@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
 import Input from './Input'
 import Button from './Button'
+import { useTheme } from '../Hooks/ThemeContext';
+import Text from './Text';
+import axios from 'axios';
 
 export default function Form(props) { //inputs=Array(of Objs.), title=String
 
@@ -9,10 +12,12 @@ export default function Form(props) { //inputs=Array(of Objs.), title=String
         return intial
     }, {})
 
-    const [formValue, updateValues] = useState(initialState) 
+    const [formValues, updateValues] = useState(initialState)
+    const [requestMessage, setReqMsg] = useState('')
 
     const buttonOnclick = () => {
-        const user = props.submitFunc(formValue)
+        updateValues(initialState)
+        const user = props.submitFunc(formValues)
         console.log(user)
     }
 
@@ -29,6 +34,7 @@ export default function Form(props) { //inputs=Array(of Objs.), title=String
                     ? props.inputs.map( inProps => 
                             <Input
                             key={inProps.name} 
+                            value={formValues[inProps.name]}
                             name={inProps.name}
                             ph={inProps.ph}
                             type={inProps.type}
@@ -41,7 +47,7 @@ export default function Form(props) { //inputs=Array(of Objs.), title=String
 
                                 console.log(newValue);
 
-                                updateValues( {...formValue, [inputName]: newValue} )
+                                updateValues( {...formValues, [inputName]: newValue} )
                             }}
                             />
                     ): 'Dev Warning! No Inputs, Check Code'
